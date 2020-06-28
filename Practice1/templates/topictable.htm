@@ -1,0 +1,30 @@
+<!DOCTYPE html> {% extends 'index.htm' %} {% block body_block %}
+<div>
+    {% if access_records %}
+    <table style="margin-left:20px;">
+
+        <thead style="background-color:rgb(100, 3, 3);color:white;">
+            <th>Sr. No.</th>
+            <th>Site Name</th>
+            <th>Date Accessed</th>
+            <th>Topic</th>
+            <th>URL</th>
+        </thead>
+        <tbody>
+            {% for acc in access_records %}
+            <tr>
+                <td>{{ forloop.counter}}</td>
+                <td>{{acc.name|upper}}</td>
+                <td>{{acc.date}}</td>
+                <td>{{acc.name.topic|upper|cut:'S'}}</td>
+                <td>
+                    <a href="{{acc.name.url}}">{{acc.name.url}}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No records found!</p>
+    {% endif %}
+</div>
+{% endblock %}

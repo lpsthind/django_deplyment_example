@@ -1,0 +1,28 @@
+<!DOCTYPE html> {% extends 'index.htm' %} {% block body_block %}
+<div>
+    <div class="container">
+        <div class="jumbotron">
+            <br>
+            <h3 style="font-family:Counter-Strike;font-size:35px">
+                Login
+            </h3>
+            <br>
+            <form method="post" action={% url "first_app:user_login" %}>
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td><label for="username">Username</label></td>
+                        <td><input type="text" name="username" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password</label></td>
+                        <td><input type="password" name="password" value="">
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" value="Login" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

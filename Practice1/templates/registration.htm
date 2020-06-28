@@ -1,0 +1,23 @@
+<!DOCTYPE html> {% extends 'index.htm' %} {% block body_block %}
+<div>
+    <div class="container">
+        <div class="jumbotron">
+            {% if registered %}
+            <h1 style="color: rgb(22, 1, 22);">Thank you for the registration.</h1>
+            {% else %}
+            <h3 style="font-family:Counter-Strike;font-size:35px">
+                Register
+            </h3>
+            <br>
+            <form method="post" enctype="multipart/form-data">
+                <table>
+                    {{ Userform.as_table }} {{ UserProfileInfoForm.as_table }} {% csrf_token %}
+                </table>
+                <input type="submit" value="Register" class="btn btn-primary">
+            </form>
+            <br>
+            <a href={% url "first_app:user_login" %}>Already have an account?</a> {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
